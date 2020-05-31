@@ -1,11 +1,33 @@
 import Typography from "typography"
 import Wordpress2016 from "typography-theme-wordpress-2016"
 
+const fonts = [
+  '-apple-system',
+  'BlinkMacSystemFont',
+  'Segoe UI',
+  'Roboto',
+  'Oxygen',
+  'Ubuntu',
+  'Cantarell',
+  'Fira Sans',
+  'Droid Sans',
+  'Helvetica Neue',
+  'sans-serif',
+]
+
+const joinedFonts = fonts.join(',')
+
 Wordpress2016.overrideThemeStyles = () => {
   return {
     "a.gatsby-resp-image-link": {
       boxShadow: `none`,
     },
+    'h1, h2, h3, h4, h5, h6': {
+      fontFamily: `Hind,${joinedFonts}`,
+    },
+    'li, footer, a, p, small': {
+      fontFamily: `Open Sans,${joinedFonts}`,
+    }
   }
 }
 
