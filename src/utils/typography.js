@@ -6,7 +6,6 @@ const fonts = [
   'BlinkMacSystemFont',
   'Segoe UI',
   'Roboto',
-  'Oxygen',
   'Ubuntu',
   'Cantarell',
   'Fira Sans',

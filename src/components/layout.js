@@ -1,6 +1,6 @@
 import React from "react"
 import { Link } from "gatsby"
-
+import AdLogo from './ad-logo'
 import { rhythm, scale } from "../utils/typography"
 
 const Layout = ({ location, title, children }) => {
@@ -16,16 +16,7 @@ const Layout = ({ location, title, children }) => {
           marginTop: 0,
         }}
       >
-        <Link
-          style={{
-            boxShadow: `none`,
-            color: `inherit`,
-            fontFamily: 'inherit'
-          }}
-          to={`/`}
-        >
-          {title}
-        </Link>
+        <HeaderLink title={title} />
       </h1>
     )
   } else {
@@ -33,16 +24,7 @@ const Layout = ({ location, title, children }) => {
       <h3
         style={{ marginTop: 0 }}
       >
-        <Link
-          style={{
-            boxShadow: `none`,
-            color: `inherit`,
-            fontFamily: 'inherit'
-          }}
-          to={`/`}
-        >
-          {title}
-        </Link>
+        <HeaderLink title={title} />
       </h3>
     )
   }
@@ -56,6 +38,7 @@ const Layout = ({ location, title, children }) => {
       }}
     >
       <header>{header}</header>
+      <AdLogo />
       <main>{children}</main>
       <footer>
         © {new Date().getFullYear()}, Built with
@@ -65,5 +48,18 @@ const Layout = ({ location, title, children }) => {
     </div>
   )
 }
+
+const HeaderLink = ({ title }) => (
+  <Link
+    style={{
+      boxShadow: `none`,
+      color: `inherit`,
+      fontFamily: 'inherit'
+    }}
+    to={`/`}
+  >
+    {title}
+  </Link>
+)
 
 export default Layout
