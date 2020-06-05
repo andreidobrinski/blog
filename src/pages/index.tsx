@@ -48,7 +48,7 @@ const BlogIndex = ({ data, location }: PageProps<Data>) => {
                 }}
               >
                 <Link
-                  style={{ boxShadow: `none`, fontFamily: "inherit" }}
+                  style={{ fontFamily: "inherit" }}
                   to={node.fields.slug}
                 >
                   {title}
