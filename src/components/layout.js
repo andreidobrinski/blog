@@ -1,7 +1,7 @@
-import React from "react"
-import { Link } from "gatsby"
+import React from 'react'
+import { Link } from 'gatsby'
 import AdLogo from './ad-logo'
-import { rhythm, scale } from "../utils/typography"
+import { rhythm, scale } from '../utils/typography'
 
 const Layout = ({ location, title, children }) => {
   const rootPath = `${__PATH_PREFIX__}/`
@@ -21,9 +21,7 @@ const Layout = ({ location, title, children }) => {
     )
   } else {
     header = (
-      <h3
-        style={{ marginTop: 0 }}
-      >
+      <h3 style={{ marginTop: 0 }}>
         <HeaderLink title={title} />
       </h3>
     )
@@ -40,10 +38,16 @@ const Layout = ({ location, title, children }) => {
       <header>{header}</header>
       <AdLogo />
       <main>{children}</main>
-      <footer>
-        © {new Date().getFullYear()}, Built with
+      <footer style={{ float: 'right' }}>
+        Built with{' '}
+        <span role="img" aria-label="love">
+          ❤️
+        </span>{' '}
+        in
         {` `}
-        <a href="https://www.gatsbyjs.org">Gatsby</a>
+        <span role="img" aria-label="canada">
+          🇨🇦
+        </span>
       </footer>
     </div>
   )
@@ -54,9 +58,9 @@ const HeaderLink = ({ title }) => (
     style={{
       boxShadow: `none`,
       color: `inherit`,
-      fontFamily: 'inherit'
+      fontFamily: 'inherit',
     }}
-    to={`/`}
+    to="/"
   >
     {title}
   </Link>
