@@ -18,6 +18,7 @@ const SEO = ({ description, lang, meta, title }) => {
           siteMetadata {
             title
             description
+            siteUrl
             social {
               twitter
             }
@@ -28,6 +29,8 @@ const SEO = ({ description, lang, meta, title }) => {
   )
 
   const metaDescription = description || site.siteMetadata.description
+
+  console.log(site.siteMetadata)
 
   return (
     <Helmet
@@ -52,6 +55,20 @@ const SEO = ({ description, lang, meta, title }) => {
         {
           property: `og:type`,
           content: `website`,
+        },
+        {
+          property: 'og:url',
+          content: site.siteMetadata.siteUrl,
+        },
+        {
+          property: 'og:image',
+          content:
+            'https://raw.githubusercontent.com/andreidobrinski/blog/master/logo.png',
+        },
+        {
+          property: 'twitter:image',
+          content:
+            'https://raw.githubusercontent.com/andreidobrinski/blog/master/logo.png',
         },
         {
           name: `twitter:card`,
