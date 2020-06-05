@@ -16,6 +16,11 @@ const fonts = [
 
 const joinedFonts = fonts.join(',')
 
+const colours = {
+  primary: '#61dbff',
+  secondary: '#062f70',
+}
+
 Wordpress2016.overrideThemeStyles = () => ({
   'a.gatsby-resp-image-link': {
     boxShadow: `none`,
@@ -24,20 +29,23 @@ Wordpress2016.overrideThemeStyles = () => ({
     color: 'rgba(0, 0, 0, 0.9)',
     textDecoration: 'none',
     padding: '0 1px',
-    boxShadow: 'inset 0 -6px 0 0 #61dbff',
+    boxShadow: `inset 0 -6px 0 0 ${colours.primary}`,
     transition: 'box-shadow 0.3s ease-in',
   },
   'a:hover': {
-    boxShadow: 'inset 0 -40px 0 0 #61dbff',
+    boxShadow: `inset 0 -40px 0 0 ${colours.primary}`,
   },
   'a:active': {
-    boxShadow: 'inset 0 -40px 0 0 #61dbff',
+    boxShadow: `inset 0 -40px 0 0 ${colours.primary}`,
   },
   'h1, h2, h3, h4, h5, h6': {
     fontFamily: `Hind,${joinedFonts}`,
   },
   'li, footer, a, p, small': {
     fontFamily: `Open Sans,${joinedFonts}`,
+  },
+  blockquote: {
+    borderLeft: `0.32813rem solid ${colours.secondary}`,
   },
 })
 
