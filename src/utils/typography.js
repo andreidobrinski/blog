@@ -16,7 +16,7 @@ const fonts = [
 
 const joinedFonts = fonts.join(',')
 
-const colours = {
+export const colours = {
   primary: '#61dbff',
   secondary: '#062f70',
 }
