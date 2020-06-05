@@ -5,7 +5,7 @@ import { PageProps, Link, graphql } from "gatsby"
 import Bio from "../components/bio"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import { rhythm } from "../utils/typography"
+import { rhythm, colours } from "../utils/typography"
 
 type Data = {
   site: {
@@ -48,7 +48,7 @@ const BlogIndex = ({ data, location }: PageProps<Data>) => {
                 }}
               >
                 <Link
-                  style={{ fontFamily: "inherit" }}
+                  style={{ boxShadow: 'none', fontFamily: "inherit", color: colours.secondary }}
                   to={node.fields.slug}
                 >
                   {title}
