@@ -1,7 +1,7 @@
 ---
 title: How to Fix GitHub Security Issues and Vulnerabilities with Create React App
-date: '2015-05-01T22:12:03.284Z'
-description: test test
+date: '2020-06-05'
+description: Keeping your dependencies up to date
 ---
 
 You've started an instance of Create React App some time ago, pushed the code to GitHub, and now you're seeing the email/notification that "One of your dependencies has a security vulnerability". These notifications are helpful in finding potential issues that you may not have known about otherwise, but can also be worrying if you're unsure about how to resolve the issue. Fortunately, the update takes only a few minutes and becomes fairly routine after having several Create React App projects up on GitHub for a while. Let's go through the steps.
