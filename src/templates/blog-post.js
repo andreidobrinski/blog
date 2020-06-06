@@ -5,6 +5,7 @@ import Bio from '../components/bio'
 import Layout from '../components/layout'
 import SEO from '../components/seo'
 import { rhythm, scale } from '../utils/typography'
+import { usePostDate } from '../components/hooks'
 
 const BlogPostTemplate = ({ data, pageContext, location }) => {
   const post = data.mdx
@@ -15,7 +16,7 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
     <Layout location={location} title={siteTitle}>
       <SEO
         title={post.frontmatter.title}
-        description={post.frontmatter.description || post.excerpt}
+        description={post.frontmatter.description}
       />
       <article>
         <header>
@@ -34,7 +35,7 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
               marginBottom: rhythm(1),
             }}
           >
-            {post.frontmatter.date}
+            {usePostDate(post.frontmatter)}
           </p>
         </header>
         <MDXRenderer>{post.body}</MDXRenderer>
@@ -94,6 +95,7 @@ export const pageQuery = graphql`
       frontmatter {
         title
         date(formatString: "MMMM DD, YYYY")
+        updated(formatString: "MMMM DD, YYYY")
         description
       }
     }

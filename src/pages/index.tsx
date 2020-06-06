@@ -6,6 +6,7 @@ import Bio from "../components/bio"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { rhythm, colours } from "../utils/typography"
+import { usePostDate } from "../components/hooks"
 
 type Data = {
   site: {
@@ -20,6 +21,7 @@ type Data = {
         frontmatter: {
           title: string
           date: string
+          updated: string
           description: string
         }
         fields: {
@@ -54,7 +56,7 @@ const BlogIndex = ({ data, location }: PageProps<Data>) => {
                   {title}
                 </Link>
               </h3>
-              <small>{node.frontmatter.date}</small>
+              <small>{usePostDate(node.frontmatter)}</small>
             </header>
             <section>
               <p
@@ -74,26 +76,27 @@ const BlogIndex = ({ data, location }: PageProps<Data>) => {
 export default BlogIndex
 
 export const pageQuery = graphql`
-  query {
-    site {
-      siteMetadata {
-        title
-      }
-    }
-    allMdx(sort: { fields: [frontmatter___date], order: DESC }) {
-      edges {
-        node {
-          excerpt
-          fields {
-            slug
-          }
-          frontmatter {
-            date(formatString: "MMMM DD, YYYY")
-            title
-            description
-          }
-        }
-      }
-    }
-  }
-`
+         query {
+           site {
+             siteMetadata {
+               title
+             }
+           }
+           allMdx(sort: { fields: [frontmatter___date], order: DESC }) {
+             edges {
+               node {
+                 excerpt
+                 fields {
+                   slug
+                 }
+                 frontmatter {
+                   date(formatString: "MMMM DD, YYYY")
+                   updated(formatString: "MMMM DD, YYYY")
+                   title
+                   description
+                 }
+               }
+             }
+           }
+         }
+       `
