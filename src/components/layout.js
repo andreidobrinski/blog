@@ -39,12 +39,11 @@ const Layout = ({ location, title, children }) => {
       <AdLogo />
       <main>{children}</main>
       <footer style={{ float: 'right' }}>
-        Built with{' '}
+        Built with&nbsp;
         <span role="img" aria-label="love">
           ❤️
-        </span>{' '}
-        in
-        {` `}
+        </span>
+        &nbsp; in&nbsp;
         <span role="img" aria-label="canada">
           🇨🇦
         </span>
