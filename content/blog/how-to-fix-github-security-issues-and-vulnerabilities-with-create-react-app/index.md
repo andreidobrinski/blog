@@ -1,12 +1,13 @@
 ---
 title: How to Fix GitHub Security Issues and Vulnerabilities with Create React App
 date: '2020-06-05'
+updated: '2020-06-06'
 description: Keeping your dependencies up to date
 ---
 
 You've started an instance of Create React App some time ago, pushed the code to GitHub, and now you're seeing the email/notification that "One of your dependencies has a security vulnerability". These notifications are helpful in finding potential issues that you may not have known about otherwise, but can also be worrying if you're unsure about how to resolve the issue. Fortunately, the update takes only a few minutes and becomes fairly routine after having several Create React App projects up on GitHub for a while. Let's go through the steps.
 
-## Is the code actually shipped?
+## Is the code shipped?
 
 Perhaps the code is part of a course or tutorial and even though it's on GitHub, you've never shipped the project. Great, that means you don't have any security issues you need to worry about!
 
@@ -14,7 +15,7 @@ If the code is stale and you don't plan on coming back to it, feel free to dismi
 
 ## How do I fix the vulnerabilities?
 
-There's two main parts to fixing the vulnerabilities: pushing the updated dependencies to GitHub and deploying the app with the updated dependencies. Let's start with the updating the repo.
+There are two main parts to fixing the vulnerabilities: pushing the updated dependencies to GitHub and deploying the app with the updated dependencies. Let's start with the updating the repo.
 
 1. **Get the latest code.** Clone the repo or pull down the latest if the repo is already on your machine.
 2. **Take a note of all the vulnerabilities.** These are the ones that GitHub provides for you in the security alert.
@@ -31,7 +32,7 @@ One reason why updating `react-scripts` wouldn't resolve the security issue is i
 
 Now that your repo is up to date, let's make sure that your shipped code is free from vulnerabilites as well.
 
-1. **Clean up the old dependencies.** Run `rm -rf node_modules` at the root of your directory, or just drag your `node_modules` folder into the trash.
+1. **Clean up the old dependencies.** Run `rm -rf node_modules`(Mac) or `rmdir /S /Q node_modules`(Windows) at the root of your directory, or just drag your `node_modules` folder into the trash.
 2. **Install the updated dependencies**. Run `yarn install` or just `yarn` to install the dependencies from your updated `package.json`.
 3. **Deploy your app.** Run whatever deploy command you have for that repo that you're updating.
 4. **Tell your team.** If there are other developers on the project, especially if they have deploy permissions, tell them to pull the latest code, remove their `node_modules` folder, and reinstall dependencies.
