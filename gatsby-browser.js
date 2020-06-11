@@ -1,1 +1,1 @@
-import "prismjs/themes/prism.css"
+import 'prism-themes/themes/prism-atom-dark.css'
