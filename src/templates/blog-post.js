@@ -10,7 +10,7 @@ import { usePostDate } from '../components/hooks'
 const BlogPostTemplate = ({ data, pageContext, location }) => {
   const post = data.mdx
   const siteTitle = data.site.siteMetadata.title
-  const { previous, next } = pageContext
+  const { previous, next, githubUrl } = pageContext
 
   return (
     <Layout location={location} title={siteTitle}>
@@ -39,9 +39,17 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
           </p>
         </header>
         <MDXRenderer>{post.body}</MDXRenderer>
+        <section
+          style={{
+            marginTop: rhythm(2),
+          }}
+        >
+          <a href={githubUrl}>Edit on GitHub</a>
+        </section>
         <hr
           style={{
             marginBottom: rhythm(1),
+            marginTop: rhythm(1),
           }}
         />
         <footer>

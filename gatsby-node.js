@@ -14,6 +14,7 @@ exports.createPages = async ({ graphql, actions }) => {
         ) {
           edges {
             node {
+              fileAbsolutePath
               fields {
                 slug
               }
@@ -37,14 +38,19 @@ exports.createPages = async ({ graphql, actions }) => {
   posts.forEach((post, index) => {
     const previous = index === posts.length - 1 ? null : posts[index + 1].node
     const next = index === 0 ? null : posts[index - 1].node
+    const { slug } = post.node.fields
+    const [_, fileExtension] = post.node.fileAbsolutePath.split('.')
+
+    const githubUrl = `https://github.com/andreidobrinski/blog/tree/master/content/blog${slug}index.${fileExtension}`
 
     createPage({
-      path: post.node.fields.slug,
+      path: slug,
       component: blogPost,
       context: {
-        slug: post.node.fields.slug,
+        slug,
         previous,
         next,
+        githubUrl,
       },
     })
   })
