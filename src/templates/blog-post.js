@@ -6,6 +6,7 @@ import Layout from '../components/layout'
 import SEO from '../components/seo'
 import { rhythm, scale } from '../utils/typography'
 import { usePostDate } from '../components/hooks'
+import '../utils/code-snippet.css'
 
 const BlogPostTemplate = ({ data, pageContext, location }) => {
   const post = data.mdx
