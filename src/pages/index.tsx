@@ -23,6 +23,7 @@ type Data = {
           date: string
           updated: string
           description: string
+          draft: boolean
         }
         fields: {
           slug: string
@@ -40,6 +41,8 @@ const BlogIndex = ({ data, location }: PageProps<Data>) => {
     <Layout location={location} title={siteTitle}>
       <SEO title="All posts" />
       {posts.map(({ node }) => {
+        if (node.frontmatter.draft && process.env.NODE_ENV === 'production')
+          return false
         const title = node.frontmatter.title || node.fields.slug
         return (
           <article key={node.fields.slug}>
@@ -94,6 +97,7 @@ export const pageQuery = graphql`
                    updated(formatString: "MMMM DD, YYYY")
                    title
                    description
+                   draft
                  }
                }
              }
