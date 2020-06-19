@@ -39,6 +39,7 @@ exports.createPages = async ({ graphql, actions }) => {
     const previous = index === posts.length - 1 ? null : posts[index + 1].node
     const next = index === 0 ? null : posts[index - 1].node
     const { slug } = post.node.fields
+    // eslint-disable-next-line
     const [_, fileExtension] = post.node.fileAbsolutePath.split('.')
 
     const githubUrl = `https://github.com/andreidobrinski/blog/tree/master/content/blog${slug}index.${fileExtension}`
