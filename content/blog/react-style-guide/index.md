@@ -389,4 +389,4 @@ Remember to add `as="a"` as a prop so that screen readers know that the button i
 
 ## Conclusion
 
-That's it for now. If you have any thoughts or comments you'd like to share, I'd love to hear them! Let me know via [Twitter](https://twitter.com/andreidobrinski) or GitHub.
+That's it for now. If you have any thoughts or comments you'd like to share, I'd love to hear them! Let me know via [Twitter](https://twitter.com/andreidobrinski) or [GitHub](https://github.com/andreidobrinski/blog/blob/master/content/blog/react-style-guide/index.md).
