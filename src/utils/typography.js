@@ -47,6 +47,9 @@ Wordpress2016.overrideThemeStyles = () => ({
   blockquote: {
     borderLeft: `0.32813rem solid ${colours.secondary}`,
   },
+  code: {
+    fontSize: 'inherit',
+  },
 })
 
 delete Wordpress2016.googleFonts
