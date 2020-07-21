@@ -1,6 +1,7 @@
 ---
 title: React Style Guide
 date: '2020-06-23'
+updated: '2020-07-20'
 description: Patterns I follow to write consistent React code
 ---
 
@@ -64,6 +65,36 @@ const [count, setCount] = useState(0)
 const [isSelected, setSelected] = useState()
 // or when a persisted default would be inaccurate
 const [age, setAge] = useState(0)
+```
+
+### useState: Prefer functional `setState` when relying on current state
+
+**Why?**
+
+- React may batch multiple `setState` calls into a single update for [performance](https://www.freecodecamp.org/news/functional-setstate-is-the-future-of-react-374f30401b6b/)
+- It may be unsafe to rely on current state values when updating state
+- Pass a function into `setState` to get the current state
+
+**Do**
+
+```js
+const [count, setCount] = useState(0);
+// ...
+<p>{count}</p>
+<button onClick={() => setCount(prevCount => prevCount + 1)}>
+  Increment
+</button>
+```
+
+**Don't**
+
+```js
+const [count, setCount] = useState(0);
+// ...
+<p>{count}</p>
+<button onClick={() => setCount(count + 1)}>
+  Increment
+</button>
 ```
 
 ### useEffect: Separate `useEffect`s based on dependency array
