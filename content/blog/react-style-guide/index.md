@@ -1,7 +1,7 @@
 ---
 title: React Style Guide
 date: '2020-06-23'
-updated: '2020-07-20'
+updated: '2020-10-07'
 description: Patterns I follow to write consistent React code
 ---
 
@@ -27,7 +27,7 @@ const [name, setName] = useState('')
 const [firstName, setName] = useState('')
 ```
 
-The exception to this rule is booleans, which follow a slightly different naming approach.
+The exception to this rule is booleans, which follow a slightly different naming approach, outlined below.
 
 ### useState: Use `is` before a boolean state variable
 
@@ -63,7 +63,7 @@ const [count, setCount] = useState(0)
 
 ```js
 const [isSelected, setSelected] = useState()
-// or when a persisted default would be inaccurate
+// or when a default would be inaccurate if persisted
 const [age, setAge] = useState(0)
 ```
 
@@ -72,7 +72,7 @@ const [age, setAge] = useState(0)
 **Why?**
 
 - React may batch multiple `setState` calls into a single update for [performance](https://www.freecodecamp.org/news/functional-setstate-is-the-future-of-react-374f30401b6b/)
-- It may be unsafe to rely on current state values when updating state
+- It may be [unsafe](https://kentcdodds.com/blog/use-state-lazy-initialization-and-function-updates) to rely on current state values when updating state
 - Pass a function into `setState` to get the current state
 
 **Do**
@@ -124,6 +124,35 @@ useEffect(() => {
   runWhenCountChanges()
 }, [count])
 ```
+
+### useEffect: Comment on effect's purpose
+
+**Why?**
+
+- To reduce the time it takes to understand what the effect does
+
+**Do**
+
+```js
+// set adding state to false if a todo is selected
+useEffect(() => {
+  if (selectedTodo) {
+    setAdding(false)
+  }
+}, [selectedTodo])
+```
+
+**Don't**
+
+```js
+useEffect(() => {
+  if (selectedTodo) {
+    setAdding(false)
+  }
+}, [selectedTodo])
+```
+
+While the above example is simplified, the helpfulness of a comment grows proportionally to the complexity of the effect.
 
 ### useReducer: Prefer this over `useState` when pieces of state need to know about one another
 
