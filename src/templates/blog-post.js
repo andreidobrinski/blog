@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link, graphql } from 'gatsby'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
+import { MDXProvider } from '@mdx-js/react'
 import Bio from '../components/bio'
 import Layout from '../components/layout'
 import SEO from '../components/seo'
@@ -39,7 +40,15 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
             {usePostDate(post.frontmatter)}
           </p>
         </header>
-        <MDXRenderer>{post.body}</MDXRenderer>
+        <MDXProvider
+          components={{
+            a: props => (
+              <a {...props} target="_blank" rel="noopener noreferrer" />
+            ),
+          }}
+        >
+          <MDXRenderer>{post.body}</MDXRenderer>
+        </MDXProvider>
         <section
           style={{
             marginTop: rhythm(2),
