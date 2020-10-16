@@ -36,12 +36,31 @@ pre[class*='language-'] {
 }
 
 /* Code blocks */
+pre {
+  margin-bottom: 0;
+}
+
 pre[class*='language-'] {
-  padding: 1em;
-  margin: 0.5em 0;
-  margin-bottom: 1.75rem;
   overflow: auto;
   border-radius: 0.3em;
+}
+
+.gatsby-highlight {
+  background: #1d1f21;
+  padding: 1em;
+  border-radius: 0.5em;
+  margin-bottom: 1.75rem;
+}
+
+.gatsby-highlight pre[class*='language-'].line-numbers {
+  padding-left: 2.8em;
+}
+
+.gatsby-highlight-code-line {
+  background-color: #505254;
+  display: block;
+  padding-right: 1em;
+  border-right: 0.25em solid #b6b8ba;
 }
 
 :not(pre) > code[class*='language-'],
@@ -80,7 +99,6 @@ pre[class*='language-'] {
 
 .token.class-name {
   color: #ffffb6;
-  text-decoration: underline;
 }
 
 .token.boolean,
