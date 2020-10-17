@@ -185,14 +185,16 @@ export default Waveform
 
 The play/pause button doesn't yet convey the current or intended state of the audio file to the user. We can manage this with React's `useState` by toggling state in the button's `onClick` and reading the state to determine what the button's UI should say.
 
-```jsx{1,8,28-29}
+```jsx{1,8,30,31}
 import React, { useEffect, useRef, useState } from 'react'
 import PropTypes from 'prop-types'
 import WaveSurfer from 'wavesurfer.js'
 
 const Waveform = ({ audio }) => {
   const containerRef = useRef()
-  const waveSurferRef = useRef()
+  const waveSurferRef = useRef({
+    isPlaying: () => false,
+  })
   const [isPlaying, toggleIsPlaying] = useState(false)
 
   useEffect(() => {
@@ -235,6 +237,8 @@ export default Waveform
 There is a downside with this implementation: we must duplicate Wavesurfer's own `isPlaying()` state into React with `toggleIsPlaying(waveSurferRef.current.isPlaying())`, creating potentially two sources of truth with React's state and Wavesurfer's state. This approach lets us rely on React's diffing and rerendering to update the DOM outside of the Wavesurfer instance, in the case of the play/pause button.
 
 I have yet to discover an easier/more performant implementation that can rely on Wavesurfer as the single source of truth and lift any necessary state up. If you know of one, I'd love to see it!
+
+Note that we added an initial value of `isPlaying: () => false` to `waveSurferRef`. This is a safety net in case the button's `onClick` gets called with `waveSurferRef.current.isPlaying()` before `isPlaying()` is defined.
 
 ## Styling
 
