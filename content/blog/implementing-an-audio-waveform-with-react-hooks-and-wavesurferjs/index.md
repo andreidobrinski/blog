@@ -1,7 +1,7 @@
 ---
 title: Implementing an Audio Waveform with React Hooks and Wavesurfer.js
 date: '2020-10-17'
-description: Keeping your dependencies up to date
+description: Building a waveform to play an mp3 file
 ---
 
 ## What are we building?
