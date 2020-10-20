@@ -6,6 +6,8 @@ description: A tutorial for building a waveform to play an mp3 file
 
 ## What are we building?
 
+![waveform](https://github.com/andreidobrinski/react-wavesurfer-demo/raw/master/screenshot.png)
+
 A React component that takes an audio clip and displays it in a waveform, with simple play/pause functionality. Here's the [demo](https://andreidobrinski.github.io/react-wavesurfer-demo/) and the completed [source code](https://github.com/andreidobrinski/react-wavesurfer-demo).
 
 ## How are we building it?
