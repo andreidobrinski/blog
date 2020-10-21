@@ -104,7 +104,9 @@ Waveform.propTypes = {
 export default Waveform
 ```
 
-We instantiated `waveSurfer` in the `useEffect` and assigned it to a React ref. It's also possible use a CSS id instead of a ref, but keep in mind that we'd need a unique id for each instance of WaveSurfer in the document. We're also cleaning up the instance with `waveSurfer.destroy()` in the return of the `useEffect` and passing `[audio]` as the second argument to make sure the effect only runs if the `audio` prop changes.
+We instantiated `waveSurfer` in the `useEffect` and assigned it to a React ref. It's also possible use a CSS id instead of a ref, but keep in mind that we'd need a unique id for each instance of WaveSurfer in the document.
+
+We're also cleaning up the instance with `waveSurfer.destroy()` in the return of the `useEffect` and passing `[audio]` as the second argument to make sure the effect only runs if the `audio` prop changes.
 
 ## Adding pause and play functionality
 
@@ -145,7 +147,7 @@ export default Waveform
 
 Notice that you can `{console.log(waveSurferRef.current)}` in the `return` of the component and see the object that Wavesurfer.js creates for us. This is what we'll call on for play and pause inside of a `<button>`. We'll use Wavesurfer's handy `playPause()` which can both pause and play accordingly.
 
-```jsx
+```jsx{25-27}
 import React, { useEffect, useRef } from 'react'
 import PropTypes from 'prop-types'
 import WaveSurfer from 'wavesurfer.js'
