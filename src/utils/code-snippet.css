@@ -71,6 +71,7 @@ pre[class*='language-'] {
   display: block;
   padding-right: 1em;
   border-right: 0.25em solid #b6b8ba;
+  margin-right: 1em;
 }
 
 :not(pre) > code[class*='language-'],
