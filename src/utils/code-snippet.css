@@ -50,10 +50,20 @@ pre[class*='language-'] {
   padding: 1em;
   border-radius: 0.5em;
   margin-bottom: 1.75rem;
+  overflow: auto;
 }
 
 .gatsby-highlight pre[class*='language-'].line-numbers {
   padding-left: 2.8em;
+}
+
+.gatsby-highlight pre[class*='language-'] {
+  background-color: transparent;
+  margin: 0;
+  padding: 0;
+  overflow: initial;
+  float: left;
+  min-width: 100%;
 }
 
 .gatsby-highlight-code-line {
