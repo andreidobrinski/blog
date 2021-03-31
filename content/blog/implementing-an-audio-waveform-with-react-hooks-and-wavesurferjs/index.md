@@ -1,6 +1,7 @@
 ---
 title: Implementing an Audio Waveform with React Hooks and Wavesurfer.js
 date: '2020-10-17'
+updated: '2021-03-30'
 description: A tutorial for building a waveform to play an mp3 file
 ---
 
@@ -9,6 +10,10 @@ description: A tutorial for building a waveform to play an mp3 file
 ![waveform](https://github.com/andreidobrinski/react-wavesurfer-demo/raw/master/screenshot.png)
 
 A React component that takes an audio clip and displays it in a waveform, with simple play/pause functionality. Here's the [demo](https://andreidobrinski.github.io/react-wavesurfer-demo/) and the completed [source code](https://github.com/andreidobrinski/react-wavesurfer-demo).
+
+## Intended Audience
+
+React developers looking to integrate an audio waveform component into an app.
 
 ## How are we building it?
 
@@ -76,7 +81,7 @@ export default App
 Now let's create the Waveform component. In a new file, `Waveform.js`, let's add:
 
 ```jsx
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import PropTypes from 'prop-types'
 import WaveSurfer from 'wavesurfer.js'
 
@@ -113,7 +118,7 @@ We're also cleaning up the instance with `waveSurfer.destroy()` in the return of
 The waveform is there, but we can't interact with it yet. Let's change that. An implementation with a class component would normally call a function `this.waveSurfer`, but since we're using a function component, let's store the instance of `waveSurfer` in a ref to access across renders later:
 
 ```jsx{7,14-16}
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import PropTypes from 'prop-types'
 import WaveSurfer from 'wavesurfer.js'
 
@@ -148,7 +153,7 @@ export default Waveform
 Notice that you can `{console.log(waveSurferRef.current)}` in the `return` of the component and see the object that Wavesurfer.js creates for us. This is what we'll call on for play and pause inside of a `<button>`. We'll use Wavesurfer's handy `playPause()` which can both pause and play accordingly.
 
 ```jsx{25-27}
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import PropTypes from 'prop-types'
 import WaveSurfer from 'wavesurfer.js'
 
@@ -189,7 +194,7 @@ export default Waveform
 
 The play/pause button doesn't yet convey the current or intended state of the audio file to the user. We can manage this with React's `useState` by toggling state in the button's `onClick` and reading the state to determine what the button's UI should say.
 
-```jsx{1,8,30,31}
+```jsx{8,30,31}
 import React, { useEffect, useRef, useState } from 'react'
 import PropTypes from 'prop-types'
 import WaveSurfer from 'wavesurfer.js'
