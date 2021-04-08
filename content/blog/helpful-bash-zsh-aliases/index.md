@@ -1,6 +1,7 @@
 ---
 title: Helpful Bash/Zsh Aliases
 date: '2020-08-02'
+updated: '2021-04-07'
 description: Snippets that improve my productivity in the terminal
 ---
 
@@ -88,6 +89,24 @@ alias grb="git for-each-ref --count=10 --sort=-committerdate refs/heads/ --forma
 ```
 
 `grb` (git recent branches) gives me the 10 most recent branches in my git repository.
+
+## Decrease Key Repeat and Increase Track Speed on Mac
+
+```bash
+# decrease key repeats
+defauts write -g KeyRepeat -int 1
+defaults read -g KeyRepeat # 1
+
+defaults write -g InitialKeyRepeat -int 10
+defaults read -g InitialKeyRepeat # 10
+
+# increase tracking speed
+defaults write -g com.apple.trackpad.scaling -float 3.0
+defaults read -g com.apple.trackpad.scaling # 3
+
+defaults write -g com.apple.mouse.scaling -float 10.0
+defaults read -g com.apple.mouse.scaling # 10
+```
 
 ## Miscellaneous git shortcuts
 
