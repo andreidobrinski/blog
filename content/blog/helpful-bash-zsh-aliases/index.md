@@ -90,6 +90,22 @@ alias grb="git for-each-ref --count=10 --sort=-committerdate refs/heads/ --forma
 
 `grb` (git recent branches) gives me the 10 most recent branches in my git repository.
 
+## Print test suite from working directory
+
+```bash
+testDiff() {
+  newTests=$(git diff --name-only main | grep .test.'[ts|tsx|js|jsx]')
+  array=()
+  for FILE in $(echo "${newTests[@]}");do
+    array+=("${FILE}")
+  done
+  testOutput=$(npm run test -- --findRelatedTests $array --verbose)
+  echo $testOutput
+}
+```
+
+Keep in mind that this function is hardcoded to diff against the `main` branch.
+
 ## Decrease Key Repeat and Increase Track Speed on Mac
 
 ```bash
