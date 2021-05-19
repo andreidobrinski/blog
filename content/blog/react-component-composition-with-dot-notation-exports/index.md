@@ -1,12 +1,12 @@
 ---
-title: Composition with Compound React Components and Dot Notation Exports
+title: React Component Composition with Dot Notation Exports
 date: '2021-05-18'
 description: Co-locating React components and using them together with dot notation
 ---
 
 ## Intended Audience
 
-Beginner and intermediate React developers looking to learn more about the dot notation export pattern with compound React components.
+Beginner and intermediate React developers looking to learn more about the dot notation export pattern with React components.
 
 ## Example
 
@@ -79,7 +79,7 @@ Let's now go over what's happening in this example.
 
 ## Breakdown
 
-The `Modal` component and some styled components are co-located in `Modal.js`, all of which are being exported. We then use `Modal.Heading = Heading` for example to allow for `Heading` to be used with the `Modal` export. The styled components can imported individually if need be.
+The `Modal` component and some styled components are co-located and exported from `Modal.js`. We then use `Modal.Heading = Heading` pattern, for example, to allow for `Heading` to be used with the `Modal` export.
 
 The parent component imports only `Modal`. The styled components may be used inside the `Modal`, depending on what's needed in the implementation, and they can be called with the dot notation pattern.
 
@@ -119,9 +119,7 @@ than these components
 </Modal>
 ```
 
-React's `children` prop makes for component composition and compound components have been [discussed before](https://kentcdodds.com/blog/advanced-react-component-patterns).
-
-Dot notation is something you may be familiar with, especially from using open source libraries. React Navigation's [Stack.Screen](https://reactnavigation.org/docs/screen) comes to mind as well as React's own API [import pattern](https://reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html) of
+React's `children` prop makes for component composition and dot notation is something you may be familiar with, especially from using open source libraries. React Navigation's [Stack.Screen](https://reactnavigation.org/docs/screen) comes to mind as well as React's own API [import pattern](https://reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html) of
 
 ```jsx
 import * as React from 'react'
