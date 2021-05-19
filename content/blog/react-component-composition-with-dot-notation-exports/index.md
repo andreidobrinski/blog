@@ -101,10 +101,6 @@ Keeping the `Modal` and all of its potential children in the same file for each 
 
 For example, we can more easily infer that these components are related
 
-- TypeScript can help autocomplete the components
-
-If you start typing `<Modal.`, TypeScript will show a list of the components you've assigned to `Modal`. The autocomplete helps with productivity (typing components faster) and discovery (showing which components are available).
-
 ```jsx
 <Modal>
   <Modal.Heading>Heading</Modal.Heading>
@@ -122,6 +118,10 @@ than these components
   <Button>Button</Button>
 </Modal>
 ```
+
+- TypeScript can help autocomplete the components
+
+If you start typing `<Modal.`, TypeScript will show a list of the components you've assigned to `Modal`. The autocomplete helps with productivity (typing components faster) and discovery (showing which components are available).
 
 React's `children` prop makes for component composition and dot notation is something you may be familiar with, especially from using open source libraries. React Navigation's [Stack.Screen](https://reactnavigation.org/docs/screen) comes to mind as well as React's own API [import pattern](https://reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html) of
 
