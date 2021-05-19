@@ -101,6 +101,10 @@ Keeping the `Modal` and all of its potential children in the same file for each 
 
 For example, we can more easily infer that these components are related
 
+- TypeScript can help autocomplete the components
+
+If you start typing `<Modal.`, TypeScript will show a list of the components you've assigned to `Modal`. The autocomplete helps with productivity (typing components faster) and discovery (showing which components are available).
+
 ```jsx
 <Modal>
   <Modal.Heading>Heading</Modal.Heading>
