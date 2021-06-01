@@ -1,7 +1,7 @@
 ---
 title: React Style Guide
 date: '2020-06-23'
-updated: '2020-10-07'
+updated: '2021-06-01'
 description: Patterns I follow to write consistent React code
 ---
 
@@ -299,6 +299,101 @@ export const TodosContextProvider = ({ children }) => {
 
   return <TodosContext.Provider value={value}>{children}</TodosContext.Provider>
 }
+```
+
+## TypeScript
+
+### Prefer `interface Props` to type props on the main exported component
+
+**Why?**
+
+- To differentiate the main component being exported from co-located components
+
+**Do**
+
+```js
+// Modal.tsx
+import styled from 'styled-components'
+
+interface ButtonProps {
+  // button props
+}
+
+const Button =
+  styled.button <
+  ButtonProps >
+  `
+  // button styles
+`
+
+interface Props {
+  // Modal props
+  isVisible: boolean;
+}
+
+export function Modal({ isVisible }: Props) {
+  return (
+    <>
+      {/* Modal component JSX */}
+      <Button />
+    </>
+  )
+}
+```
+
+**Don't**
+
+```js
+// Modal.tsx
+import styled from 'styled-components'
+
+interface ButtonProps {
+  // button props
+}
+
+const Button =
+  styled.button <
+  ButtonProps >
+  `
+  // button styles
+`
+
+interface ModalProps {
+  // Modal props
+  isVisible: boolean;
+}
+
+export function Modal({ isVisible }: ModalProps) {
+  return (
+    <>
+      {/* Modal component JSX */}
+      <Button />
+    </>
+  )
+}
+```
+
+### Prefer to type arrays over array method callback arguments
+
+**Why?**
+
+- TypeScript will be more useful if it knows the array type
+- If TS says that an array method callback must be typed, it's a [sign that the array is not typed](https://www.briefs.fm/3-minutes-with-kent/151) and TS infers it an `any`
+
+**Do**
+
+```js
+const fruits: Array<String> = ['apple', 'banana', 'watermelon', 'tomato']
+
+const fruitSalad = fruits.filter(fruit => fruit !== 'tomato')
+```
+
+**Don't**
+
+```js
+const fruits = ['apple', 'banana', 'watermelon', 'tomato']
+
+const fruitSalad = fruits.filter((fruit: string) => fruit !== 'tomato')
 ```
 
 ## Styled Components
