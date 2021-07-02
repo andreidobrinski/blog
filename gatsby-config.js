@@ -80,13 +80,11 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-google-fonts`,
+      resolve: `gatsby-plugin-web-font-loader`,
       options: {
-        fonts: [
-          `hind\:700`,
-          `open sans\:400,700`, // you can also specify font weights and styles
-        ],
-        display: 'swap',
+        google: {
+          families: ['Hind:700', 'Open Sans:400,700'],
+        },
       },
     },
     `gatsby-plugin-styled-components`,
