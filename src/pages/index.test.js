@@ -1,9 +1,9 @@
 import React from 'react'
 import { render } from '@testing-library/react'
-import IndexPage from './index'
+import IndexPage from './index.tsx'
 
 jest.mock('../components/layout', () => ({ children }) => <div>{children}</div>)
-// jest.mock('../../components/image', () => () => 'Image')
+jest.mock('../components/bio', () => () => 'Bio')
 jest.mock('../components/seo', () => () => 'Seo')
 
 const data = {
