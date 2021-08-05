@@ -3,7 +3,7 @@ module.exports = {
     title: `Andrei Dobrinski's Blog`,
     author: {
       name: `Andrei Dobrinski`,
-      summary: `— a front-end developer that loves the modern web.`,
+      summary: `— a frontend developer that loves the modern web.`,
     },
     description: `A blog about modern web technology.`,
     siteUrl: `https://andreidobrinski.com/blog`,
