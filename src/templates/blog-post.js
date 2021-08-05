@@ -43,7 +43,7 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
         <MDXProvider
           components={{
             a: props => (
-              <a {...props} target="_blank" rel="noopener noreferrer" />
+              <a {...props} target="_blank" rel="noopener noreferrer" style={{ marginRight: '4px'}} />
             ),
           }}
         >
