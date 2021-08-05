@@ -40,6 +40,8 @@ Wordpress2016.overrideThemeStyles = () => ({
   },
   'h1, h2, h3, h4, h5, h6': {
     fontFamily: `Hind,${joinedFonts}`,
+    textTransform: 'initial',
+    letterSpacing: '0.016em'
   },
   'li, footer, a, p, small': {
     fontFamily: `Open Sans,${joinedFonts}`,
@@ -50,6 +52,9 @@ Wordpress2016.overrideThemeStyles = () => ({
   code: {
     fontSize: 'inherit',
   },
+  'ol, ul': {
+    listStylePosition: 'inside'
+  }
 })
 
 delete Wordpress2016.googleFonts
