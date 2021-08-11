@@ -110,7 +110,7 @@ Keep in mind that this function is hardcoded to diff against the `main` branch.
 
 ```bash
 # decrease key repeats
-defauts write -g KeyRepeat -int 1
+defaults write -g KeyRepeat -int 1
 defaults read -g KeyRepeat # 1
 
 defaults write -g InitialKeyRepeat -int 10
