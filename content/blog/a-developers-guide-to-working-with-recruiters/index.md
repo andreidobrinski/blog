@@ -1,6 +1,7 @@
 ---
 title: A Developer's Guide to Working with Recruiters
 date: '2021-08-05'
+updated: '2021-08-10'
 description: Understanding recruiters and how to respond to their messages
 ---
 
@@ -28,7 +29,7 @@ Let's start with the scenario where the position does not align with what you ar
 
 If you're not open to new opportunities, let the recruiter know. Just make sure to be polite and respectful with your rejection. I like to thank them, decline their offer, and keep the door open for future communication. This is my standard reply:
 
-> Hi $RECRUITER_NAME,
+> Hi RECRUITER_NAME,
 >
 > Thanks so much for reaching out!
 >
@@ -38,7 +39,9 @@ If you're not open to new opportunities, let the recruiter know. Just make sure 
 >
 > Andrei
 
-Recruiters may also reach out with positions that don’t align with your experience, career goals, or tech expertise. In this case, you can politely decline, and let them know what kind of positions you would be interested in for the future. Personally, I receive a lot of requests for technologies that I don’t work in. In those cases, I let the recruiter know and ask if they have any React positions instead.
+I'll personalize the message if something about the pitch stood out - if the recruiter's message made it clear that they looked into my portfolio or experience, or if the company's mission resonates with me - I'll mention it in my response.
+
+Recruiters may reach out with positions that don’t align with your experience, career goals, or tech expertise. In this case, you can politely decline, and let them know what kind of positions you would be interested in for the future. Personally, I receive a lot of requests for technologies that I don’t work in. In those cases, I let the recruiter know and ask if they have any React positions instead.
 
 If you're not interested in the role but are working on your inbound marketing, you can also ask questions like "what search term did you enter to find my profile?" or "what made my profile stand out as a candidate for the role?".
 
