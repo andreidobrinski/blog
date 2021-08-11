@@ -50,8 +50,8 @@ wip() {
   git diff --name-only $1 | xargs code
 }
 
-# shortcut with master branch
-alias wipm="git diff --name-only master | xargs code"
+# shortcut with main branch
+alias wipm="git diff --name-only main | xargs code"
 ```
 
 `wip` (work in progress) accepts and argument of a branch name, performs a git diff of changed files with the current branch and pipes the result into VS Code, which opens each file. I find this useful for context switching, as it quickly takes my workspace back into the state it was when I was last working on a branch. It also allows me to clean up my workspace knowing that I can easily return to the work-in-progress state.
@@ -77,10 +77,10 @@ I pass ticket number as an argument and Chrome opens with that ticket. Useful fo
 ## Push current git branch to staging
 
 ```bash
-alias gps='git push staging $(git rev-parse --abbrev-ref HEAD):master -f'
+alias gps='git push staging $(git rev-parse --abbrev-ref HEAD):main -f'
 ```
 
-The prerequisite here is that my environment needs to be configured so that `git push staging your-branch:master -f` is the command to push to staging. The other piece in the `gps` (git push staging) alias finds the git branch that I'm currently on, so that I don't need to write out the entire command.
+The prerequisite here is that my environment needs to be configured so that `git push staging your-branch:main -f` is the command to push to staging. The other piece in the `gps` (git push staging) alias finds the git branch that I'm currently on, so that I don't need to write out the entire command.
 
 ## Print my recent git branches
 
@@ -129,7 +129,7 @@ defaults read -g com.apple.mouse.scaling # 10
 ```bash
 alias gco="git checkout"
 alias branch="git checkout -b"
-alias gcm="git checkout master"
+alias gcm="git checkout main"
 alias gc-="git checkout -"
 ```
 
