@@ -47,7 +47,7 @@ exports.createPages = async ({ graphql, actions }) => {
     // eslint-disable-next-line
     const [_, fileExtension] = post.node.fileAbsolutePath.split('.')
 
-    const githubUrl = `https://github.com/andreidobrinski/blog/tree/master/content/blog${slug}index.${fileExtension}`
+    const githubUrl = `https://github.com/andreidobrinski/blog/tree/main/content/blog${slug}index.${fileExtension}`
 
     createPage({
       path: slug,
