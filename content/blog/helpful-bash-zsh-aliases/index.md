@@ -1,7 +1,7 @@
 ---
 title: Helpful Bash/Zsh Aliases
 date: '2020-08-02'
-updated: '2021-04-07'
+updated: '2021-08-13'
 description: Snippets that improve my productivity in the terminal
 ---
 
@@ -108,20 +108,26 @@ Keep in mind that this function is hardcoded to diff against the `main` branch.
 
 ## Decrease Key Repeat and Increase Track Speed on Mac
 
+Decreasing key repeats helps by allowing for more inputs on the press-and-hold of a key. `InitialKeyRepeat` is the throttle time in ms between the input on the key press and the second input on the press-and-hold. `KeyRepeat` is the throttle time in ms between inputs after the `InitialKeyRepeat`, repeating for as long as the key is held down. Keep in mind that a system restart is needed for these changes to take effect.
+
 ```bash
 # decrease key repeats
 defaults write -g KeyRepeat -int 1
-defaults read -g KeyRepeat # 1
+defaults read -g KeyRepeat
+# returns 1
 
 defaults write -g InitialKeyRepeat -int 10
-defaults read -g InitialKeyRepeat # 10
+defaults read -g InitialKeyRepeat
+# returns 10
 
 # increase tracking speed
 defaults write -g com.apple.trackpad.scaling -float 3.0
-defaults read -g com.apple.trackpad.scaling # 3
+defaults read -g com.apple.trackpad.scaling
+# returns 3
 
 defaults write -g com.apple.mouse.scaling -float 10.0
-defaults read -g com.apple.mouse.scaling # 10
+defaults read -g com.apple.mouse.scaling
+# returns 10
 ```
 
 ## Miscellaneous git shortcuts
