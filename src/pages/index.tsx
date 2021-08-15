@@ -21,7 +21,6 @@ type Data = {
         frontmatter: {
           title: string
           date: string
-          updated: string
           description: string
           draft: boolean
         }
@@ -94,7 +93,6 @@ export const pageQuery = graphql`
                  }
                  frontmatter {
                    date(formatString: "MMMM D, YYYY")
-                   updated(formatString: "MMMM D, YYYY")
                    title
                    description
                    draft
