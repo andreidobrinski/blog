@@ -12,7 +12,7 @@ import '../utils/code-snippet.css'
 const BlogPostTemplate = ({ data, pageContext, location }) => {
   const post = data.mdx
   const siteTitle = data.site.siteMetadata.title
-  const { previous, next, githubUrl } = pageContext
+  const { previous, next, githubUrl, slug } = pageContext
 
   return (
     <Layout location={location} title={siteTitle}>
@@ -37,7 +37,10 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
               marginBottom: rhythm(1),
             }}
           >
-            {usePostDate(post.frontmatter)}
+            {usePostDate({
+              postedDate: post.frontmatter.date,
+              slug
+            })}
           </p>
         </header>
         <MDXProvider

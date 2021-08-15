@@ -1,7 +1,6 @@
 ---
 title: Helpful Bash/Zsh Aliases
 date: '2020-08-02'
-updated: '2021-08-13'
 description: Snippets that improve my productivity in the terminal
 ---
 

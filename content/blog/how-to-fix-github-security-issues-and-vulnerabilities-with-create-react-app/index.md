@@ -1,7 +1,6 @@
 ---
 title: How to Fix GitHub Security Issues and Vulnerabilities with Create React App
 date: '2020-06-05'
-updated: '2020-06-06'
 description: Keeping your dependencies up to date
 ---
 

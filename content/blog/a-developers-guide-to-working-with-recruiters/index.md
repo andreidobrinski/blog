@@ -1,7 +1,6 @@
 ---
 title: A Developer's Guide to Working with Recruiters
 date: '2021-08-05'
-updated: '2021-08-10'
 description: Understanding recruiters and how to respond to their messages
 ---
 

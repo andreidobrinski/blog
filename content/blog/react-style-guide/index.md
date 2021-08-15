@@ -1,7 +1,6 @@
 ---
 title: React Style Guide
 date: '2020-06-23'
-updated: '2021-06-01'
 description: Patterns I follow to write consistent React code
 ---
 
