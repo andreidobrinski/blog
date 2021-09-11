@@ -89,6 +89,49 @@ There are a few benefits to using this kind of pattern.
 
 This pattern is useful when multiple components are often composed and used together. This can be useful because:
 
+- Inversion of control: the user, and not the `Modal`, is not responsible for use cases
+
+Let's say we were to build a version of the modal component that accepts props in place of children. Imagine it looks something like this.
+
+```jsx
+// Modal.js
+
+export function Modal({ isVisible, header, body, buttonText, buttonOnClick }) {
+  return (
+    <Wrap isVisible={isVisible}>
+      {header && <Header>{header}</Header>}
+      {body && <Body>{body}</Body>}
+      {button && <Button onClick={buttonOnClick}>{buttonText}</Button>}
+    </Wrap>
+  )
+}
+
+// ParentComponent.js
+import { useState } from 'react'
+import { Modal } from './Modal'
+
+export function ParentComponent() {
+  const [isModalVisible, setModalVisible] = useState(false)
+
+  return (
+    <>
+      <Modal
+        isVisible={isModalVisible}
+        header="Hello, I am a Modal"
+        body="I am receiving this data as props"
+        buttonText="Ok"
+        buttonOnClick={() => console.log('button clicked')}
+      />
+    </>
+  )
+```
+
+This version of the modal is resposible for handling all the use cases from the props it gets, as well as the conditional rendering of components in cases where props are missing.
+
+Let's say that the Modal's use cases get extended: a new implementation calls for an `<a>` tag instead of a button and an icon above the header text. The prop-based modal would need to accept these new props and add logic to handle all the use cases.
+
+The composed version of the modal can simply expose a `<Modal.Icon>` and `<Modal.Link>` and let the user of the modal build out the use case, and the `Modal` component will render its children. The `Modal` inverts the control by letting the the user handle the use case, instead of handling it internally.
+
 - Fewer import statements are needed to implement `Modal` and its children
 
 `import { Modal } from '../components/Modal` instead of `import { Modal, Heading, Button, Body } from '../components/Modal'`
