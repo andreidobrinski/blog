@@ -1,0 +1,119 @@
+---
+title: Supporting Right-to-Left Languages with Bidirectional CSS
+date: '2021-09-02'
+description: Styling both horizontal reading directions with the same CSS
+---
+
+import { Alert } from './alert'
+
+I recently worked on adding right-to-left (RTL) language support on a project that had an existing LTR (left-to-right) implementation. I want to share a bit about the process and some interesting directionally-agnostic CSS rules that work for both LTR and RTL alike.
+
+## Intended Audience
+
+Frontend web developers interested in supporting RTL implicitly with bidirectional CSS or explicitly with CSS selectors and JavaScript.
+
+## Why is this important?
+
+Supporting a right-to-left web UI can be a fun and interesting challenge. It may be tempting to approach the solution by writing styles for LTR initially and using CSS selectors to support the RTL-specific implementation. However, CSS gives us some interesting options to write bidirectional CSS, meaning that it will work as intended regardless of reading orientation. This makes for cleaner code with fewer selectors to target RTL specifically.
+
+## How does it work?
+
+Let’s take a look at a small alert component below, and imagine how you might implement the space between the svg icon and the text.
+
+<Alert />
+
+As a frontend developer you may intuit something like this. It's code that we've likely seen and written before.
+
+```css
+svg {
+  margin-right: 12px;
+}
+```
+
+This code carries an implicit assumption, “the UI is intended to be read left-to-right, therefore the margin should be on the right of the icon”.
+
+If this component was to be rendered in RTL, the icon would be to the right of the text, and the spacing between the elements would be incorrect. Let's see how that would look. We can do this by adding a `dir="rtl"` attribute on an HTML element.
+
+<Alert dir="rtl" />
+
+The browser is doing exactly what we're telling it to - adding margin to the right of the svg. What we really want out of the UI is the margin to appear _after_ the svg in the flow of the document.
+
+Let’s take a look at a different implementation.
+
+```css
+svg {
+  margin-inline-end: 12px;
+}
+```
+
+Here the code is saying, “I don’t care about the direction the UI is read, but the margin should be **after** the icon”.
+
+This is how bidirectional CSS works - we favour the logical arrangement of UI over the presentational arrangement, which is great if we are looking to support both LTR and RTL with the same line of CSS. Feel free to play around with this example in [CodeSandbox](https://codesandbox.io/s/bidi-css-example-gq56u?file=/index.html).
+
+Let’s take a look at a few more simple swaps we can make.
+
+```css
+/* instead of this */
+margin-left: 10px;
+margin-right: 10px;
+
+padding-left: 10px;
+padding-right: 10px;
+
+border-left: 10px;
+border-right: 10px;
+
+text-align: left;
+text-align: right;
+
+/* try this */
+margin-inline-start: 10px;
+margin-inline-end: 10px;
+
+padding-inline-start: 10px;
+padding-inline-end: 10px;
+
+border-inline-start: 10px;
+border-inline-end: 10px;
+
+text-align: start;
+text-align: end;
+```
+
+Bidirectional CSS is a good idea even if you you’re not currently supporting RTL with your UI because it will make refactoring much easier if and when you need to support RTL languages.
+
+Readability may be a potential tradeoff as developers have likely seen more `margin-left`s than `margin-inline-start`s and can understand them more quickly. That being said, I would still advocate for the [learning](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Logical_Properties) and use of bidirectional CSS rules where applicable, as it helps us focus more on the logical arrangement of the UI instead of just the presentational arrangement.
+
+Keep in mind that bidirectional CSS won't be applicable in cases where content is explicitly styled based on presentation, such as using a `position: absolute` with a `left` or `right` property. In those cases, we'll need to target RTL specifically.
+
+## What about styles for RTL specifically?
+
+There are two strategies to explicitly target RTL-specific styles: using CSS selectors and using JavaScript. Let’s dive into the CSS method first.
+
+### Using CSS Selectors with HTML
+
+Use `[dir="rtl"]` to match the HTML `dir` attribute and ignore elements don’t have it, even if they inherit a direction from their parent. This works well if you’re setting `dir` on an element yourself.
+
+Use `:dir(rtl)` to match the value calculated by the user agent. This works well if the value is inherited, as you don’t need to add the additional HTML `dir` attribute to the element you want to target for styling. Feel free to check out the [MDN docs](https://developer.mozilla.org/en-US/docs/Web/CSS/:dir) for more info.
+
+```css
+[dir='rtl'] {
+  /* put RTL-specific styles here */
+}
+
+:dir(rtl) {
+  /* put RTL-specific styles here */
+}
+```
+
+If your entire document is intended to be RTL (as opposed to just a small portion of the page), add the `dir="rtl"` attribute to the `html` tag. [W3C recommends](https://www.w3.org/International/questions/qa-html-dir) that you do not use CSS to apply the base styling, as made possible with `direction: rtl;`. This is because the direction is an important part of the document structure, so using bidi (bidirectional) markup is also a [W3C recommendation](https://www.w3.org/International/questions/qa-bidi-css-markup).
+
+### Targeting RTL with JavaScript
+
+You may need to use JavaScript if your implementation involves logic to swap templates or components based on the reading direction of the UI. I’ve used [rtl-detect](https://github.com/shadiabuhilal/rtl-detect) to parse a locale string for RTL and return either a direction string (`ltr` / `rtl`) or an `isRtl` boolean.
+
+The directional string can be good to place on your root `<html>` element, as well as any other element you want to select with a CSS selector.
+
+The boolean is great for ternaries or conditional logic in templates, for example passing a `<ArrowLeft />` or `<ArrowRight />` icon component depending on the result of `isRtl`. If you use Styled Components, the boolean can be passed in with props to use conditionally within your styles.
+
+If you’re using React, consider creating a custom `useLanguageDirection` hook that wraps the rtl-detect API and returns the result. Abstracting away your locale implementation will make for easier consumption by not having to call rtl-detect with the locale each time and will make refactoring easier should you decide to swap rtl-detect for a different library.
