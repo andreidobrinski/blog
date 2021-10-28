@@ -117,3 +117,5 @@ The directional string can be good to place on your root `<html>` element, as we
 The boolean is great for ternaries or conditional logic in templates, for example passing a `<ArrowLeft />` or `<ArrowRight />` icon component depending on the result of `isRtl`. If you use Styled Components, the boolean can be passed in with props to use conditionally within your styles.
 
 If you’re using React, consider creating a custom `useLanguageDirection` hook that wraps the rtl-detect API and returns the result. Abstracting away your locale implementation will make for easier consumption by not having to call rtl-detect with the locale each time and will make refactoring easier should you decide to swap rtl-detect for a different library.
+
+Keep in mind that in a RTL layout some elements, like a phone number, still read LTR. A potential solution for this is to add a `dir="ltr"` to the phone number, parse whether the page is RTL with JavaScript, and add styles such as `text-align: end` to the phone number element to work with the RTL page if the page should be RTL. If you know of a better solution, I'd love to [hear about it](https://twitter.com/andreidobrinski)!
