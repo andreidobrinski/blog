@@ -1,7 +1,7 @@
 {
   "name": "andrei-dobrinski-blog",
   "private": true,
-  "description": "A personal tech blog",
+  "description": "Andrei Dobrinski's tech blog",
   "version": "0.1.0",
   "author": "Andrei Dobrinski <dobrinski.andrei@gmail.com>",
   "dependencies": {
