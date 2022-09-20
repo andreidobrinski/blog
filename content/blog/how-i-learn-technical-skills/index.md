@@ -6,7 +6,7 @@ description: The process and approach to deciding how to learn a skill
 
 As a developer, learning new technologies is a key part of maintaining, broadening, and honing your skillset. Exploring new technologies allows you to steer your career, learn more about what interests you, and develop your skills. Learning as a developer means taking the opportunity to design your own path from awareness to expertise.
 
-I started my coding journey in 2016 as a self-taught developer. Since then I’ve had some great mentors teach me and I developed my own strategies for learning new technologies. I’ve learned and worked with web technologies such as React, Svelte and GraphQL and mobile technologies like Swift, Flutter and React Native.
+I started my coding journey in 2016 as a self-taught developer. Since then I’ve had some great mentors teach me and I developed my own strategies for [learning new technologies](https://andreidobrinski.com/learning). I’ve learned and worked with web technologies such as React, Svelte and GraphQL and mobile technologies like Swift, Flutter and React Native.
 
 I’ll be sharing my approach to learning new technical skills. Keep in mind that this article is not prescriptive towards how _you_ should learn - the intention is to share an outlook that would hopefully help you with your learning.
 
