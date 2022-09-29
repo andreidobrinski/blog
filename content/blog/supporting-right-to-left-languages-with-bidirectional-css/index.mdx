@@ -108,6 +108,26 @@ Use `:dir(rtl)` to match the value calculated by the user agent. This works well
 
 If your entire document is intended to be RTL (as opposed to just a small portion of the page), add the `dir="rtl"` attribute to the `html` tag. [W3C recommends](https://www.w3.org/International/questions/qa-html-dir) that you do not use CSS to apply the base styling, as made possible with `direction: rtl;`. This is because the direction is an important part of the document structure, so using bidi (bidirectional) markup is also a [W3C recommendation](https://www.w3.org/International/questions/qa-bidi-css-markup).
 
+## When would I avoid bidirectional CSS?
+
+Considering bidirectional reading when you build UIs is generally a good practice, but there are situations when you may not need to worry about supporting both horizontal reading directions.
+
+Bidirectional CSS does come with a cost: it’s less familiar to developers than selectors with “left” or “right” in them. Developers that have used CSS would likely have written a ‘margin-left’ before while possibly having never encountered a ‘margin-inline-start’, making it a more popular choice when working with a dev team. Let’s explore when this tradeoff makes sense.
+
+### Lack of Business Need
+
+Let’s pretend our hypothetical project has a well-defined target market and set of requirements. The PMs and stakeholders believe that the project is intended for an audience that speaks English and that the project will never need to be internationalized in its future. If we take this at face value, we can assume that the project would never stand to benefit from bidirectional CSS.
+
+Bidirectional CSS wouldn’t hurt the project on a technical level, but it might make development more time-consuming of the team is unfamiliar with bidirectional rules.
+
+### Teaching Material
+
+Let’s say you’re creating a demo project for the purpose of teaching a technical skill. Unfamiliar CSS rules might draw attention away from the core idea that the teaching is looking to get across, especially when the intent of the teaching isn’t directly related to the project’s CSS.
+
+### Demos and Prototypes
+
+In this case, the end goal is to create a demo or prototype that is never intended to become production code. Code that is meant to test an idea rather than be delivered to the user as a final product wouldn’t need the same care and attention as production code.
+
 ### Targeting RTL with JavaScript
 
 You may need to use JavaScript if your implementation involves logic to swap templates or components based on the reading direction of the UI. I’ve used [rtl-detect](https://github.com/shadiabuhilal/rtl-detect) to parse a locale string for RTL and return either a direction string (`ltr` / `rtl`) or an `isRtl` boolean.
