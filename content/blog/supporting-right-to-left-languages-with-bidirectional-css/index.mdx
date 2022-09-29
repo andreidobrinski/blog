@@ -108,6 +108,18 @@ Use `:dir(rtl)` to match the value calculated by the user agent. This works well
 
 If your entire document is intended to be RTL (as opposed to just a small portion of the page), add the `dir="rtl"` attribute to the `html` tag. [W3C recommends](https://www.w3.org/International/questions/qa-html-dir) that you do not use CSS to apply the base styling, as made possible with `direction: rtl;`. This is because the direction is an important part of the document structure, so using bidi (bidirectional) markup is also a [W3C recommendation](https://www.w3.org/International/questions/qa-bidi-css-markup).
 
+### Targeting RTL with JavaScript
+
+You may need to use JavaScript if your implementation involves logic to swap templates or components based on the reading direction of the UI. I’ve used [rtl-detect](https://github.com/shadiabuhilal/rtl-detect) to parse a locale string for RTL and return either a direction string (`ltr` / `rtl`) or an `isRtl` boolean.
+
+The directional string can be good to place on your root `<html>` element, as well as any other element you want to select with a CSS selector.
+
+The boolean is great for ternaries or conditional logic in templates, for example passing a `<ArrowLeft />` or `<ArrowRight />` icon component depending on the result of `isRtl`. If you use Styled Components, the boolean can be passed in with props to use conditionally within your styles.
+
+If you’re using React, consider creating a custom `useLanguageDirection` hook that wraps the rtl-detect API and returns the result. Abstracting away your locale implementation will make for easier consumption by not having to call rtl-detect with the locale each time and will make refactoring easier should you decide to swap rtl-detect for a different library.
+
+Keep in mind that in a RTL layout some elements, like a phone number, still read LTR. A potential solution for this is to add a `dir="ltr"` to the phone number, parse whether the page is RTL with JavaScript, and add styles such as `text-align: end` to the phone number element to work with the RTL page if the page should be RTL. If you know of a better solution, I'd love to [hear about it](https://twitter.com/andreidobrinski)!
+
 ## When would I avoid bidirectional CSS?
 
 Considering bidirectional reading when you build UIs is generally a good practice, but there are situations when you may not need to worry about supporting both horizontal reading directions.
@@ -128,14 +140,4 @@ Let’s say you’re creating a demo project for the purpose of teaching a techn
 
 In this case, the end goal is to create a demo or prototype that is never intended to become production code. Code that is meant to test an idea rather than be delivered to the user as a final product wouldn’t need the same care and attention as production code.
 
-### Targeting RTL with JavaScript
-
-You may need to use JavaScript if your implementation involves logic to swap templates or components based on the reading direction of the UI. I’ve used [rtl-detect](https://github.com/shadiabuhilal/rtl-detect) to parse a locale string for RTL and return either a direction string (`ltr` / `rtl`) or an `isRtl` boolean.
-
-The directional string can be good to place on your root `<html>` element, as well as any other element you want to select with a CSS selector.
-
-The boolean is great for ternaries or conditional logic in templates, for example passing a `<ArrowLeft />` or `<ArrowRight />` icon component depending on the result of `isRtl`. If you use Styled Components, the boolean can be passed in with props to use conditionally within your styles.
-
-If you’re using React, consider creating a custom `useLanguageDirection` hook that wraps the rtl-detect API and returns the result. Abstracting away your locale implementation will make for easier consumption by not having to call rtl-detect with the locale each time and will make refactoring easier should you decide to swap rtl-detect for a different library.
-
-Keep in mind that in a RTL layout some elements, like a phone number, still read LTR. A potential solution for this is to add a `dir="ltr"` to the phone number, parse whether the page is RTL with JavaScript, and add styles such as `text-align: end` to the phone number element to work with the RTL page if the page should be RTL. If you know of a better solution, I'd love to [hear about it](https://twitter.com/andreidobrinski)!
+I'd love to hear about your experience with working with RTL and bidirectional CSS! Feel free to reach out on [Twitter](https://twitter.com/andreidobrinski).
