@@ -140,4 +140,8 @@ Let’s say you’re creating a demo project for the purpose of teaching a techn
 
 In this case, the end goal is to create a demo or prototype that is never intended to become production code. Code that is meant to test an idea rather than be delivered to the user as a final product wouldn’t need the same care and attention as production code.
 
+### Styles Irrelevant to Document Flow
+
+Let's say the design calls for styles that are visual embellishments and they don't relate to the content of the document. Using a `position: absolute;`, for example, might mean that the style is purely intended for a visual aesthetic. As a heuristic, if the styled element is irrelevant for a screen reader, then it would likely mean that it doesn't need consideration with bidirectional CSS.
+
 I'd love to hear about your experience with working with RTL and bidirectional CSS! Feel free to reach out on [Twitter](https://twitter.com/andreidobrinski).
