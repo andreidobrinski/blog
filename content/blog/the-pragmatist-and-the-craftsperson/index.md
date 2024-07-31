@@ -1,6 +1,6 @@
 ---
 title: The Pragmatist and the Craftsperson
-date: '2024-06-31'
+date: '2024-07-31'
 description: Analyzing two extremes to help guide decision-making on the spectrum between them
 ---
 
